@@ -1,10 +1,9 @@
 ---
 name: seo
-description: Optimize for search engine visibility and ranking. Use when asked to "improve SEO", "optimize for search", "fix meta tags", "add structured data", "sitemap optimization", or "search engine optimization".
+description: Optimize for search engine visibility, ranking, and AI citations. Covers traditional SEO (Google rankings) and AEO (AI agent visibility in ChatGPT, Perplexity, Gemini). Use when asked to "improve SEO", "optimize for search", "fix meta tags", "add structured data", "AEO", "AI visibility", or "answer engine optimization".
 license: MIT
 metadata:
-  author: web-quality-skills
-  version: "1.0"
+  version: "2.0"
 ---
 
 # SEO optimization
@@ -540,6 +539,210 @@ PAGESPEED_API_KEY=... scripts/seo/pagespeed.sh urls.txt reports/pagespeed
 # Search Console API (requires GSC_ACCESS_TOKEN)
 GSC_ACCESS_TOKEN=... scripts/seo/search-console-export.mjs https://example.com 2024-01-01 2024-01-31
 ```
+
+---
+
+## AEO / AI Visibility Optimization
+
+Answer Engine Optimization (AEO) focuses on making content discoverable and citable by AI agents (ChatGPT, Perplexity, Gemini, Google AI Overviews). While SEO targets rankings and clicks, AEO targets citations, mentions, and brand authority within AI-generated responses.
+
+### Key differences from SEO
+
+```
+SEO: Rank high → get clicks → drive traffic
+AEO: Be cited → own the answer → build authority
+
+SEO metric: Position, CTR, impressions
+AEO metric: Citations, mentions, AI visibility score
+
+SEO query: "best project management software"
+AEO query: "What's the best project management software for a remote team of 15 with budget under $500/month?"
+```
+
+**Market shift:**
+- Gartner predicts 25% drop in traditional search volume by 2026 due to AI chatbots
+- 400M+ people use OpenAI products weekly
+- 58% of searches are now "zero-click" (answered directly in AI interface)
+
+### Content structure for AEO
+
+**Answer-first formatting:**
+
+```markdown
+<!-- ❌ SEO-style (context first) -->
+## What is AEO?
+In recent years, the rise of AI-powered search has transformed 
+how users discover information. This shift has created new 
+opportunities for brands. Answer Engine Optimization is...
+
+<!-- ✅ AEO-style (answer first) -->
+## What is AEO?
+Answer Engine Optimization (AEO) is the practice of structuring 
+content so AI systems can directly extract and cite answers. 
+It focuses on citations in AI responses rather than search rankings.
+
+Unlike traditional SEO, AEO optimizes for conversational queries 
+and zero-click results where users get answers without visiting 
+your site.
+```
+
+**Guidelines:**
+- Lead with 40-60 word direct answer
+- Self-contained responses (AI extracts without surrounding context)
+- Conversational, natural language
+- Specific data > vague claims
+- Include quantified claims, dates, authoritative citations
+
+**Entity-based optimization:**
+
+```markdown
+<!-- ❌ Keyword-focused -->
+"Our software helps teams collaborate better with features 
+for project management and communication."
+
+<!-- ✅ Entity-focused -->
+"Acme PM is a project management platform for remote teams. 
+Founded in 2020, serves 50,000+ companies. Key features: 
+Kanban boards, time tracking, Slack integration. Pricing: 
+$12/user/month."
+```
+
+Define who you are, what you do, and why AI should trust you.
+
+### Schema for AEO
+
+Expand beyond SEO schema to optimize for AI extraction.
+
+**Critical schema types for AEO:**
+
+1. **FAQPage** (highest AI citation rate)
+   - Template: `references/json-ld-templates.md`
+
+**FAQ answer guidelines for AEO:**
+- 40-60 words ideal (under 30 = lacks substance, over 80 = hard to extract)
+- Match visible H2/H3 headings to schema "name" property exactly
+- Include specific numbers, dates, and data
+- Self-contained (makes sense without context)
+- Natural question phrasing (how users actually ask)
+
+2. **Author + Organization** (trust signals)
+   - Template: `references/json-ld-templates.md`
+
+**Why it matters:** AI engines prioritize content from identifiable, authoritative sources. Use `sameAs` links to disambiguate your brand.
+
+3. **Product** (for e-commerce AEO)
+   - Template: `references/json-ld-templates.md`
+
+Allows AI shopping modules to show accurate pricing, availability, reviews.
+
+### Platform-specific optimization
+
+Different AI engines have different preferences. Balance all three for maximum citation probability.
+
+**ChatGPT:**
+- Neutral, encyclopedia-style tone
+- Authoritative external citations
+- Specific data and quantified claims
+- Formal structure
+
+```markdown
+Example: "According to a 2025 Gartner study, 78% of enterprises 
+adopted AI-powered search tools. The primary drivers were cost 
+reduction (cited by 62% of respondents) and improved accuracy 
+(58%). Source: Gartner AI Search Report 2025."
+```
+
+**Perplexity:**
+- Conversational, experience-driven
+- Practical examples and case studies
+- Community insights and real-world context
+- Less formal tone
+
+```markdown
+Example: "Most teams start with the free tier and upgrade after 
+2-3 months once they've proven ROI. Based on feedback from 500+ 
+customers, common triggers for upgrading include hitting user 
+limits or needing advanced reporting."
+```
+
+**Google AI Overviews:**
+- E-E-A-T signals (Experience, Expertise, Authoritativeness, Trust)
+- Fresh content with recent dates
+- Featured snippet-friendly formatting
+- Mobile-optimized structure
+
+```markdown
+Example: "Updated February 2026: Current pricing starts at 
+$12/user/month (annual billing). Month-to-month adds 20%. 
+Education and nonprofit discounts available. No free tier 
+as of Q1 2026."
+```
+
+### AEO measurement & tools
+
+**Metrics:**
+- Citation frequency (how often AI mentions your brand)
+- Visibility score (presence across AI platforms)
+- Context quality (positive/neutral/negative sentiment)
+- Source attribution (which URLs AI cites)
+
+**Tracking AI referral traffic:**
+
+In Google Analytics 4, filter traffic sources:
+- `chat.openai.com` (ChatGPT)
+- `perplexity.ai`
+- `gemini.google.com`
+- `copilot.microsoft.com`
+
+Monitor these as separate acquisition sources.
+
+Use your preferred AEO monitoring tool to track citation frequency, context, and source attribution.
+
+### AEO audit checklist
+
+#### Content audit
+- [ ] All key pages have 40-60 word direct answers upfront
+- [ ] FAQ sections with self-contained answers
+- [ ] Conversational language matching natural queries
+- [ ] Specific data (numbers, dates, sources) not vague claims
+- [ ] Author bios and organization info visible
+- [ ] Content updated with recent dates (freshness)
+
+#### Schema audit
+- [ ] FAQPage schema on FAQ/guide pages
+- [ ] Author schema on all articles/blogs
+- [ ] Organization schema site-wide
+- [ ] Product schema on product pages (if e-commerce)
+- [ ] Article schema with datePublished/dateModified
+- [ ] Schema matches visible content exactly (no hidden markup)
+- [ ] Validate with Google Rich Results Test
+
+#### Technical audit
+- [ ] JSON-LD format (preferred by AI engines)
+- [ ] Schema.org standards compliance
+- [ ] No conflicting or duplicate schema
+- [ ] Fast page load (AI crawlers prefer fast sites)
+- [ ] Clean HTML structure (semantic headings)
+- [ ] Mobile-optimized (especially for Google AI Overviews)
+
+#### Entity & authority signals
+- [ ] Clear brand identity (who you are, what you do)
+- [ ] Consistent NAP (name, address, phone) across web
+- [ ] `sameAs` links to LinkedIn, Twitter, official profiles
+- [ ] External citations and backlinks from authoritative sources
+- [ ] Active presence on review platforms
+- [ ] Google Business Profile optimized (local businesses)
+
+#### AI visibility monitoring
+- [ ] Test top 10-20 commercial queries monthly
+- [ ] Track AI referral traffic in GA4
+- [ ] Monitor brand mentions across AI platforms
+- [ ] Check citation context (positive/neutral/negative)
+- [ ] Verify factual accuracy of AI responses about your brand
+- [ ] Set up alerts for visibility changes (if using paid tools)
+
+
+---
 
 ## References
 
