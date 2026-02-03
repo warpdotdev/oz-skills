@@ -1,5 +1,5 @@
 ---
-name: seo
+name: seo-aeo
 description: Optimize for search engine visibility, ranking, and AI citations. Covers traditional SEO (Google rankings) and AEO (AI agent visibility in ChatGPT, Perplexity, Gemini). Use when asked to "improve SEO", "optimize for search", "fix meta tags", "add structured data", "AEO", "AI visibility", or "answer engine optimization".
 license: MIT
 metadata:
