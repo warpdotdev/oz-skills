@@ -520,24 +520,24 @@ body {
 
 ## Scripts (optional)
 
-Scripts under `scripts/seo/` for repeatable audits:
+Scripts under `scripts/` for repeatable audits:
 
-- `scripts/seo/lighthouse.sh`: run Lighthouse CLI against a URL or URL list and store JSON reports.
-- `scripts/seo/pagespeed.sh`: call PageSpeed Insights API with `curl` and capture JSON output.
-- `scripts/seo/search-console-export.mjs`: export Search Console Search Analytics data (requires OAuth access token).
+- `scripts/lighthouse.sh`: run Lighthouse CLI against a URL or URL list and store JSON reports.
+- `scripts/pagespeed.sh`: call PageSpeed Insights API with `curl` and capture JSON output.
+- `scripts/search-console-export.mjs`: export Search Console Search Analytics data (requires OAuth access token).
 
 Example usage:
 ```bash
 # Lighthouse (SEO category only)
-scripts/seo/lighthouse.sh https://example.com
-scripts/seo/lighthouse.sh urls.txt reports/lighthouse
+scripts/lighthouse.sh https://example.com
+scripts/lighthouse.sh urls.txt reports/lighthouse
 
 # PageSpeed Insights API (requires PAGESPEED_API_KEY)
-PAGESPEED_API_KEY=... scripts/seo/pagespeed.sh https://example.com
-PAGESPEED_API_KEY=... scripts/seo/pagespeed.sh urls.txt reports/pagespeed
+PAGESPEED_API_KEY=... scripts/pagespeed.sh https://example.com
+PAGESPEED_API_KEY=... scripts/pagespeed.sh urls.txt reports/pagespeed
 
 # Search Console API (requires GSC_ACCESS_TOKEN)
-GSC_ACCESS_TOKEN=... scripts/seo/search-console-export.mjs https://example.com 2024-01-01 2024-01-31
+GSC_ACCESS_TOKEN=... scripts/search-console-export.mjs https://example.com 2024-01-01 2024-01-31
 ```
 
 ---
