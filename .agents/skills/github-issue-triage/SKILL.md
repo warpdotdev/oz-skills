@@ -1,11 +1,11 @@
 ---
 name: github-issue-triage
-description: Evaluate GitHub issue quality against templates. Determines if bug reports have sufficient detail to investigate, identifies missing info, and suggests what's needed for actionable issues.
+description: Triage GitHub bug reports only. Check if the issue has sufficient detail to be actionable. If not, identify missing info and suggest what's needed from the issue filer.
 ---
 
 # GitHub Issue Triage
 
-Evaluate GitHub issues (especially bug reports) to determine if they contain sufficient information to be actionable. Identify missing details and provide constructive feedback.
+Evaluate GitHub issues for bug reports only. Determine if they contain sufficient info to be actionable. If not, identify missing details and provide constructive feedback.
 
 ## Workflow
 
@@ -16,20 +16,17 @@ Evaluate GitHub issues (especially bug reports) to determine if they contain suf
 - `.github/ISSUE_TEMPLATE/bug_report.yml`
 - `.github/ISSUE_TEMPLATE/*.md`
 - `.github/ISSUE_TEMPLATE.md`
+- `ISSUE_TEMPLATE.md`
 
-**If no template exists**, use this general evaluation criteria:
-- Clear description of the problem
-- Expected vs. actual behavior
-- Reproduction steps or sandbox link
-- Environment details (if relevant)
+**If no template exists**, use `references/ISSUE_TEMPLATE.md` from this skill as the fallback template, then evaluate the issue against it.
+
 
 ### 2. Evaluate Issue Quality
 
 **Critical questions:**
 
 1. **Is this a bug report?**
-   - Not a feature request
-   - Not a question or support request
+   - If the issue is a feature request or a question, do not evaluate this issue
 
 2. **Is the description clear?**
    - What's broken or wrong
@@ -48,7 +45,7 @@ Evaluate GitHub issues (especially bug reports) to determine if they contain suf
 
 ### 3. Make Determination
 
-**Ready to investigate:**
+**Ready to be actionable:**
 - Has clear problem description
 - Includes reproduction path OR enough context to debug
 - Actually a bug (not feature/question)
@@ -61,7 +58,7 @@ Evaluate GitHub issues (especially bug reports) to determine if they contain suf
 
 ### 4. Provide Feedback
 
-**If ready:** Proceed with investigation or confirm issue is actionable.
+**If ready:** Confirm issue is actionable.
 
 **If needs info:** Specify what's missing. Be constructive and specific.
 
@@ -139,8 +136,6 @@ TypeError: Cannot read property 'value' of null
 I'm encountering an issue with the glob loader. Whenever I update 
 the watched file, I get a warning message in the logs.
 
-Here's the relevant line from the code:
-https://github.com/user/my-project/blob/.../src/content/config.ts#L5
 
 The warning message:
 ```
@@ -151,7 +146,7 @@ with the same id will overwrite earlier ones.
 
 **Expected**: No warning message
 
-**Link to Minimal Reproducible Example**: -
+**Link to Minimal Reproducible Example**: - N/A
 ```
 
 **Evaluation**: ❌ Needs info
@@ -161,9 +156,6 @@ with the same id will overwrite earlier ones.
 - Code link points to private repo (can't access to debug)
 
 **Missing**:
-- Minimal reproduction (StackBlitz, CodeSandbox, or public repo)
-- Can't reproduce without access to their specific setup
+- Minimal reproduction (example code or link to a working reproduction)
 
-**Note**: This is a common pattern - legitimate bug, good error message, 
-but difficult to investigate without a reproduction
 
