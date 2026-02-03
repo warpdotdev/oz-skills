@@ -1,9 +1,9 @@
 ---
-name: github-issue-triage
+name: github-bug-report-triage
 description: Triage GitHub bug reports only. Check if the issue has sufficient detail to be actionable. If not, identify missing info and suggest what's needed from the issue filer.
 ---
 
-# GitHub Issue Triage
+# GitHub Bug Report Triage
 
 Evaluate GitHub issues for bug reports only. Determine if they contain sufficient info to be actionable. If not, identify missing details and provide constructive feedback.
 
