@@ -26,7 +26,13 @@ Warp will automatically detect the new skill on your next interaction.
 
 ## Skills in This Repository
 
-_Skills will be listed here as they are added._
+| Skill | Description |
+|-------|-------------|
+| [docs-bot](.agents/skills/docs-bot) | Automatically update user-facing documentation when code changes |
+| [github-bug-report-triage](.agents/skills/github-bug-report-triage) | Triage GitHub bug reports—check if issues have sufficient detail to be actionable |
+| [seo-aeo](.agents/skills/seo-aeo) | Optimize for search engine visibility and AI citations (SEO + AEO) |
+| [slack-qa-bot](.agents/skills/slack-qa-bot) | Research-focused Q&A assistant for investigating questions without modifying code |
+| [web-accessibility](.agents/skills/web-accessibility) | Audit web applications for WCAG accessibility compliance |
 
 ## Contributing
 
