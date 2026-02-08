@@ -78,7 +78,7 @@ When using local scheduling or delivery, select mechanisms appropriate to the us
 macOS provides several native primitives that can be combined for scheduling, notifications, and automation:
 
 - **Scheduling**
-  - `launchd` (recommended system scheduler)
+  - `launchd` (native system scheduler)
     - Supports one-time and recurring schedules
     - Reliable across reboots and sleep
   - User-level scheduled jobs (no admin privileges required)
@@ -167,22 +167,7 @@ Do not assume notifications or Slack by default.
 
 ---
 
-## Step 3: Handle platform differences
-
-Choose the appropriate backend based on the user’s environment and the selected delivery method.
-
-Examples (non-exhaustive):
-
-- macOS: native scheduling, notifications, scripts
-- Linux: cron or timers, notifications, scripts
-- Windows: Task Scheduler, notifications, scripts
-
-The exact mechanism is implementation-specific and may vary by environment.  
-Do not expose low-level system details unless the user asks.
-
----
-
-## Step 4: Normalize the schedule
+## Step 3: Normalize the schedule
 
 Normalize the schedule into a structured form:
 
@@ -197,7 +182,7 @@ Guidelines:
 
 ---
 
-## Step 5: Generate a stable name
+## Step 4: Generate a stable name
 
 Generate a short, kebab-case name based on the scheduled action.
 
@@ -209,7 +194,7 @@ If a name collision occurs, append a numeric suffix.
 
 ---
 
-## Step 6: Create the scheduled item
+## Step 5: Create the scheduled item
 
 Create the scheduled reminder or task using the chosen backend.
 
@@ -226,7 +211,7 @@ Do not assume:
 
 ---
 
-## Step 7: Confirm with the user
+## Step 6: Confirm with the user
 
 Always confirm with a clear summary:
 
