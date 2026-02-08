@@ -10,7 +10,7 @@ Think of skills as onboarding guides that help agents understand how you work.
 
 ## How Skills Work
 
-- **Skills live in `.warp/skills/` directories** - either in your project (`.warp/skills/`) or globally (`~/.warp/skills/`)
+- **Skills live in `.agents/skills/` directories** - either in your project (`.agents/skills/`) or globally (`~/.agents/skills/`)
 - **Each skill is a folder** containing a `SKILL.md` file with YAML frontmatter and markdown content
 - **Warp agents automatically discover** and load skills when relevant to your current task
 
@@ -18,9 +18,9 @@ Think of skills as onboarding guides that help agents understand how you work.
 
 To use a skill from this repository:
 
-1. Copy the skill folder (e.g., `docs-bot`) from `.warp/skills/` 
-2. Paste it into your project's `.warp/skills/` directory, or
-3. Paste it into `~/.warp/skills/` to use it across all projects
+1. Copy the skill folder (e.g., `docs-bot`) from `.agents/skills/` 
+2. Paste it into your project's `.agents/skills/` directory, or
+3. Paste it into `~/.agents/skills/` to use it across all projects
 
 Warp will automatically detect the new skill on your next interaction.
 
