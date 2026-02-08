@@ -69,11 +69,93 @@ If any of these are unclear, ask a follow-up question before scheduling.
 
 Supported categories:
 
-### Local / OS-based
-- OS scheduler (e.g. background scheduling)
-- Local notifications
-- Terminal output
-- Command or script execution
+### Local / OS-based execution options
+
+When using local scheduling or delivery, select mechanisms appropriate to the user’s operating system and the requested action. The exact implementation may vary by environment and available tools.
+
+#### macOS
+
+macOS provides several native primitives that can be combined for scheduling, notifications, and automation:
+
+- **Scheduling**
+  - `launchd` (recommended system scheduler)
+    - Supports one-time and recurring schedules
+    - Reliable across reboots and sleep
+  - User-level scheduled jobs (no admin privileges required)
+
+- **Notifications**
+  - AppleScript via `osascript`
+    - Native Notification Center alerts
+    - Can include title, subtitle, and message
+  - Can also display dialogs if explicitly requested
+
+- **Automation / Tasks**
+  - AppleScript or JavaScript for Automation (JXA)
+  - Shell scripts or binaries
+  - Can trigger other applications or workflows
+
+Use macOS-native tools when scheduling or notifying on macOS, unless the user explicitly requests a different mechanism.
+
+---
+
+#### Linux
+
+Linux environments vary widely, so choose tools that are commonly available and degrade gracefully:
+
+- **Scheduling**
+  - `cron`
+    - Widely available and suitable for recurring schedules
+  - `systemd` timers (if available)
+    - Better reliability and richer semantics than cron
+  - User-level scheduling preferred over system-wide jobs
+
+- **Notifications**
+  - `notify-send` (freedesktop.org notification spec)
+    - May not be available on all systems
+  - Terminal output if no notification system is present
+
+- **Automation / Tasks**
+  - Shell scripts
+  - Executable binaries
+  - Language runtimes available on the system
+
+If desktop notifications are unavailable, fall back to terminal output or ask the user how they want the result delivered.
+
+---
+
+#### Windows
+
+Windows provides built-in scheduling and notification capabilities through system services:
+
+- **Scheduling**
+  - Windows Task Scheduler
+    - Supports one-time and recurring tasks
+    - Can run tasks in the background or at login
+    - User-level tasks preferred unless elevated permissions are required
+
+- **Notifications**
+  - Windows Toast notifications
+    - Native system notifications
+    - May require helper scripts or APIs depending on environment
+
+- **Automation / Tasks**
+  - PowerShell scripts
+  - Batch files
+  - Executable programs
+
+When creating scheduled tasks, ensure actions are scoped to the user context unless explicitly requested otherwise.
+
+---
+
+#### Fallback behavior
+
+If a requested capability is not available on the user’s system:
+
+- Explain the limitation clearly
+- Offer an alternative (e.g. terminal output instead of notifications)
+- Ask the user how they would like to proceed
+
+Never silently downgrade behavior without informing the user.
 
 ### External / Messaging
 - Slack (requires user configuration)
