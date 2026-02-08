@@ -63,6 +63,8 @@ Extract:
 
 If any of these are unclear, ask a follow-up question before scheduling.
 
+Ask clarifying questions if the schedule is ambiguous (e.g. “tomorrow morning”) or if the timezone is unclear.
+
 ---
 
 ## Step 2: Determine delivery or execution method
