@@ -94,8 +94,6 @@ macOS provides several native primitives that can be combined for scheduling, no
   - Shell scripts or binaries
   - Can trigger other applications or workflows
 
-Use macOS-native tools when scheduling or notifying on macOS, unless the user explicitly requests a different mechanism.
-
 ---
 
 #### Linux
