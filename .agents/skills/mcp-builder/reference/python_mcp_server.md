@@ -39,7 +39,7 @@ The official MCP Python SDK provides FastMCP, a high-level framework for buildin
 - Pydantic model integration for input validation
 - Decorator-based tool registration with `@mcp.tool`
 
-**For complete SDK documentation, use WebFetch to load:**
+**For complete SDK documentation, use web fetch to load:**
 `https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md`
 
 ## Server Naming Convention

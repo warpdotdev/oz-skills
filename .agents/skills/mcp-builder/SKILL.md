@@ -58,17 +58,17 @@ Key pages to review:
 - **MCP Best Practices**: [📋 View Best Practices](./reference/mcp_best_practices.md) - Core guidelines
 
 **For TypeScript (recommended):**
-- **TypeScript SDK**: Use WebFetch to load `https://raw.githubusercontent.com/modelcontextprotocol/typescript-sdk/main/README.md`
+- **TypeScript SDK**: Take a look at `https://raw.githubusercontent.com/modelcontextprotocol/typescript-sdk/main/README.md`
 - [⚡ TypeScript Guide](./reference/node_mcp_server.md) - TypeScript patterns and examples
 
 **For Python:**
-- **Python SDK**: Use WebFetch to load `https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md`
+- **Python SDK**: Take a look at `https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md`
 - [🐍 Python Guide](./reference/python_mcp_server.md) - Python patterns and examples
 
 #### 1.4 Plan Your Implementation
 
 **Understand the API:**
-Review the service's API documentation to identify key endpoints, authentication requirements, and data models. Use web search and WebFetch as needed.
+Review the service's API documentation to identify key endpoints, authentication requirements, and data models. Use web search and web fetch as needed.
 
 **Tool Selection:**
 Prioritize comprehensive API coverage. List endpoints to implement, starting with the most common operations.
