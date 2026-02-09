@@ -1,5 +1,5 @@
 ---
-name: slack-qa-bot
+name: slack-qa-investigate
 description: Investigate and answer repository questions in read-only mode. Use when asked for research-backed answers that require codebase and documentation investigation without making file changes.
 ---
 

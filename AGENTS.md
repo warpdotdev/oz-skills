@@ -18,7 +18,7 @@ All skills are stored in the `.agents/skills/` directory. Each skill has its own
 
 ```
 .agents/skills/
-├── docs-bot/
+├── docs-update/
 │   └── SKILL.md
 ├── another-skill/
 │   └── SKILL.md
@@ -42,7 +42,7 @@ Your instructions, examples, and guidance here in markdown format.
 
 ### Required Fields
 
-- **name**: Kebab-case identifier (e.g., `docs-bot`, `rust-testing`, `api-conventions`)
+- **name**: Kebab-case identifier (e.g., `docs-update`, `rust-testing`, `api-conventions`)
 - **description**: Two sentences in a strict pattern:
   - Sentence 1: Imperative verb + what the skill does (e.g., `Audit...`, `Build...`, `Test...`)
   - Sentence 2: Starts with `Use when...` and describes trigger scenarios
@@ -95,7 +95,7 @@ description: Verb-first summary of what this skill does. Use when the user asks 
 When working in this repository:
 
 - **One skill per directory** in `.agents/skills/`
-- **Use kebab-case** for skill directory names (e.g., `docs-bot`, `deployment-workflow`)
+- **Use kebab-case** for skill directory names (e.g., `docs-update`, `deployment-workflow`)
 - **Each skill must have** a `SKILL.md` file with proper frontmatter
 - **Keep descriptions concise** - they help agents decide when to load the skill
 - **Include examples** - real code snippets and commands make skills more useful
@@ -114,7 +114,7 @@ To test a skill from this repository:
 
 Good candidates for skills in this repository:
 
-- **Workflow automation** (e.g., docs-bot for automatic documentation updates)
+- **Workflow automation** (e.g., docs-update for automatic documentation updates)
 - **Testing patterns** (e.g., how to write tests for specific frameworks)
 - **Deployment procedures** (e.g., CI/CD workflows)
 - **Code conventions** (e.g., style guides, naming patterns)

@@ -1,5 +1,5 @@
 ---
-name: docs-bot
+name: docs-update
 description: Update user-facing documentation when code changes. Use when asked to update docs, review docs, handle documentation changes, run scheduled documentation tasks, or analyze recent commits for documentation needs.
 ---
 

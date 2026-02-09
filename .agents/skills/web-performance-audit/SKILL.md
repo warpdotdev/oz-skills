@@ -1,5 +1,5 @@
 ---
-name: web-perf
+name: web-performance-audit
 description: Audit web performance using Chrome DevTools MCP. Use when asked to audit, profile, debug, or optimize page load performance, Lighthouse scores, or site speed.
 ---
 
