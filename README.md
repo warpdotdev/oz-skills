@@ -18,7 +18,7 @@ Think of skills as onboarding guides that help agents understand how you work.
 
 To use a skill from this repository:
 
-1. Copy the skill folder (e.g., `docs-bot`) from `.agents/skills/` 
+1. Copy the skill folder (e.g., `docs-update`) from `.agents/skills/` 
 2. Paste it into your project's `.agents/skills/` directory, or
 3. Paste it into `~/.agents/skills/` to use it across all projects
 

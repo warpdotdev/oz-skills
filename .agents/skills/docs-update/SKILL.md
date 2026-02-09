@@ -1,6 +1,6 @@
 ---
-name: docs-bot
-description: Automatically update user-facing documentation when code changes. Use when asked to "update docs", "review docs", "documentation changes", running as a scheduled documentation task, or analyzing recent commits for documentation needs.
+name: docs-update
+description: Update user-facing documentation when code changes. Use when asked to update docs, review docs, handle documentation changes, run scheduled documentation tasks, or analyze recent commits for documentation needs.
 ---
 
 # Documentation Bot
