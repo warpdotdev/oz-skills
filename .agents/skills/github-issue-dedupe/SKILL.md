@@ -1,6 +1,7 @@
 ---
 name: github-issue-dedupe
 description: Detect duplicate GitHub issues using semantic search and keyword matching. Use when asked to find duplicates, check for similar issues, or set up automated duplicate detection.
+license: Complete terms in LICENSE.txt
 ---
 
 # GitHub Duplicate Issue Detection

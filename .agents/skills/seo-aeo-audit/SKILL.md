@@ -1,7 +1,7 @@
 ---
 name: seo-aeo-audit
 description: Optimize for search engine visibility, ranking, and AI citations. Use when asked to improve SEO, optimize for search, fix meta tags, add structured data, or improve AEO and AI visibility.
-license: MIT
+license: Complete terms in LICENSE.txt
 metadata:
   version: "2.0"
 ---
