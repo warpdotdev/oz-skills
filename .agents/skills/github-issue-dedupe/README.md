@@ -28,7 +28,7 @@ jobs:
           warp_api_key: ${{ secrets.WARP_API_KEY }}
           profile: ${{ vars.WARP_AGENT_PROFILE || '' }}
           environment_id: ${{ vars.WARP_AGENT_ENVIRONMENT }}
-          skill_spec: "warpdotdev/oz-skills:github-duplicate-issues"
+          skill_spec: "warpdotdev/oz-skills:github-issue-dedupe"
           prompt: |
             Find duplicates of issue #${{ github.event.issue.number }} in ${{ github.repository }}.
             
