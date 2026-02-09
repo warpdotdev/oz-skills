@@ -61,7 +61,7 @@ Use these rules whenever creating or editing a skill:
 
 ### Authoring Template (Copy/Paste)
 
-Use this exact template when authoring a new skill:
+Follow this template when authoring a new skill:
 
 ````markdown
 ---
