@@ -1,7 +1,6 @@
 ---
 name: github-bug-report-triage
 description: Triage GitHub bug reports for actionability. Use when evaluating whether a bug issue has sufficient detail and identifying missing information from the reporter.
-license: Complete terms in LICENSE.txt
 ---
 
 # GitHub Bug Report Triage

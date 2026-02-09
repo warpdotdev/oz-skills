@@ -1,7 +1,6 @@
 ---
 name: ci-fix
 description: Diagnose and fix GitHub Actions CI failures. Inspects workflow runs and logs, identifies root causes, implements minimal fixes, and pushes to a fix branch. Use when CI is failing, red, broken, or needs diagnosis.
-license: Complete terms in LICENSE.txt
 ---
 
 # CI Fix

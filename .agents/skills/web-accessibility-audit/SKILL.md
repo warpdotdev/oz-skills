@@ -1,7 +1,6 @@
 ---
 name: web-accessibility-audit
 description: Audit web applications for WCAG accessibility compliance. Use when asked to run accessibility checks, identify common violations, and provide remediation guidance.
-license: Complete terms in LICENSE.txt
 tags: [accessibility, a11y, wcag, testing, auditing]
 ---
 

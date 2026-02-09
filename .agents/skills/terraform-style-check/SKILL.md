@@ -1,7 +1,6 @@
 ---
 name: terraform-style-check
 description: Generate Terraform HCL code following HashiCorp's official style conventions and best practices. Use when writing, reviewing, or generating Terraform configurations.
-license: Complete terms in LICENSE.txt
 ---
 
 # Terraform Style Guide
