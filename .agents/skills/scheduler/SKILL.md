@@ -1,6 +1,6 @@
 ---
 name: scheduler
-description: Schedule one-time or recurring tasks and reminders. Use when the user asks to schedule something, be reminded, run something later, or automate a task at a specific time or interval.
+description: Schedule on-device reminders and local actions only. Use this skill to set personal reminders or run lightweight, local tasks at a specific time or interval (e.g., notifications, local scripts), on the user's computer or with platforms like Slack. Do NOT use for scheduling cloud agents, background agentic jobs, or Oz-managed workflows.
 ---
 
 # Scheduler Skill
