@@ -14,10 +14,10 @@ For comprehensive details about the skills format and usage patterns, see `wip/w
 
 ## Repository Structure
 
-All skills are stored in the `.warp/skills/` directory. Each skill has its own subdirectory:
+All skills are stored in the `.agents/skills/` directory. Each skill has its own subdirectory:
 
 ```
-.warp/skills/
+.agents/skills/
 ├── docs-bot/
 │   └── SKILL.md
 ├── another-skill/
@@ -32,10 +32,10 @@ Each skill must have a `SKILL.md` file with this structure:
 ```markdown
 ---
 name: skill-name
-description: Brief one-sentence description of what this skill does
+description: Imperative summary sentence. Use when sentence.
 ---
 
-# Skill Content
+# Skill Title
 
 Your instructions, examples, and guidance here in markdown format.
 ```
@@ -43,13 +43,58 @@ Your instructions, examples, and guidance here in markdown format.
 ### Required Fields
 
 - **name**: Kebab-case identifier (e.g., `docs-bot`, `rust-testing`, `api-conventions`)
-- **description**: One sentence explaining what the skill teaches and when to use it
+- **description**: Two sentences in a strict pattern:
+  - Sentence 1: Imperative verb + what the skill does (e.g., `Audit...`, `Build...`, `Test...`)
+  - Sentence 2: Starts with `Use when...` and describes trigger scenarios
+
+## Skill Metadata Style Guide (Canonical)
+
+Use these rules whenever creating or editing a skill:
+
+- `name` must be kebab-case and exactly match the skill directory name
+- `description` must be exactly two sentences
+- `description` sentence 1 must start with an imperative verb (`Build`, `Audit`, `Test`, `Optimize`, `Triage`, `Generate`, `Investigate`, etc.)
+- `description` sentence 2 must start with `Use when...`
+- Keep `description` concise and concrete; avoid filler and unnecessary quotes
+- `SKILL.md` must include a single H1 in Title Case
+- H1 should reflect the skill's human-readable purpose (for example, `# Web Performance Audit`)
+
+### Authoring Template (Copy/Paste)
+
+Use this exact template when authoring a new skill:
+
+````markdown
+---
+name: your-skill-name
+description: Verb-first summary of what this skill does. Use when the user asks for the workflow this skill is designed to handle.
+---
+
+# Your Skill Title
+
+## When to Use
+
+- Trigger condition 1
+- Trigger condition 2
+- Trigger condition 3
+
+## Workflow
+
+1. Step one
+2. Step two
+3. Step three
+
+## Examples
+
+```bash
+# Example command(s)
+```
+````
 
 ## Repository Conventions
 
 When working in this repository:
 
-- **One skill per directory** in `.warp/skills/`
+- **One skill per directory** in `.agents/skills/`
 - **Use kebab-case** for skill directory names (e.g., `docs-bot`, `deployment-workflow`)
 - **Each skill must have** a `SKILL.md` file with proper frontmatter
 - **Keep descriptions concise** - they help agents decide when to load the skill
@@ -60,7 +105,7 @@ When working in this repository:
 
 To test a skill from this repository:
 
-1. Copy the skill folder to a test project's `.warp/skills/` directory
+1. Copy the skill folder to a test project's `.agents/skills/` directory
 2. Interact with a Warp agent on a relevant task
 3. Verify the agent follows the skill's guidance
 4. Refine the skill based on results
