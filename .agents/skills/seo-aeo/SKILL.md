@@ -1,12 +1,12 @@
 ---
 name: seo-aeo
-description: Optimize for search engine visibility, ranking, and AI citations. Covers traditional SEO (Google rankings) and AEO (AI agent visibility in ChatGPT, Perplexity, Gemini). Use when asked to "improve SEO", "optimize for search", "fix meta tags", "add structured data", "AEO", "AI visibility", or "answer engine optimization".
+description: Optimize for search engine visibility, ranking, and AI citations. Use when asked to improve SEO, optimize for search, fix meta tags, add structured data, or improve AEO and AI visibility.
 license: MIT
 metadata:
   version: "2.0"
 ---
 
-# SEO optimization
+# SEO Optimization
 
 Search engine optimization based on Lighthouse SEO audits and Google Search guidelines. Focus on technical SEO, on-page optimization, and structured data.
 

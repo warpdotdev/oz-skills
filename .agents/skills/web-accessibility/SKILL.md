@@ -1,6 +1,6 @@
 ---
-name: a11y-auditor
-description: Audit web applications for WCAG accessibility compliance. Identifies common accessibility pitfalls, provides remediation guidance, and generates comprehensive accessibility reports.
+name: web-accessibility
+description: Audit web applications for WCAG accessibility compliance. Use when asked to run accessibility checks, identify common violations, and provide remediation guidance.
 tags: [accessibility, a11y, wcag, testing, auditing]
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: github-bug-report-triage
-description: Triage GitHub bug reports only. Check if the issue has sufficient detail to be actionable. If not, identify missing info and suggest what's needed from the issue filer.
+description: Triage GitHub bug reports for actionability. Use when evaluating whether a bug issue has sufficient detail and identifying missing information from the reporter.
 ---
 
 # GitHub Bug Report Triage
@@ -157,5 +157,4 @@ with the same id will overwrite earlier ones.
 
 **Missing**:
 - Minimal reproduction (example code or link to a working reproduction)
-
 
