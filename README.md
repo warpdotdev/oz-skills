@@ -24,13 +24,9 @@ To use a skill from this repository:
 
 Warp will automatically detect the new skill on your next interaction.
 
-## Skills in This Repository
-
-_Skills will be listed here as they are added._
-
 ## Contributing
 
-Contributions are welcome! More guidelines coming soon.
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding skills.
 
 ## Learn More
 
