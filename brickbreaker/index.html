@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brick Breaker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero" aria-labelledby="game-title">
+      <p class="eyebrow">Plain HTML · CSS · JavaScript</p>
+      <h1 id="game-title">Brick Breaker</h1>
+      <p class="subtitle">Clear every brick, keep the ball alive, and chase a higher score.</p>
+    </section>
+
+    <section class="game-card" aria-label="Brick Breaker game">
+      <div class="hud">
+        <div>
+          <span class="label">Score</span>
+          <strong id="score">0</strong>
+        </div>
+        <div>
+          <span class="label">Lives</span>
+          <strong id="lives">3</strong>
+        </div>
+        <div>
+          <span class="label">Level</span>
+          <strong id="level">1</strong>
+        </div>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="game" width="900" height="560" aria-label="Brick Breaker play field"></canvas>
+        <div id="overlay" class="overlay">
+          <h2>Ready?</h2>
+          <p>Move with ← → or A/D. Press Space to launch.</p>
+          <button id="start-button" type="button">Start Game</button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="pause-button" type="button">Pause</button>
+        <button id="reset-button" type="button">Reset</button>
+        <p>Mouse and touch controls work too.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
