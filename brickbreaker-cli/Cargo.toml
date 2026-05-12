@@ -1,0 +1,8 @@
+[package]
+name = "brickbreaker-cli"
+version = "0.1.0"
+edition = "2021"
+description = "A dependency-free terminal brick breaker game."
+license = "MIT"
+
+[dependencies]
