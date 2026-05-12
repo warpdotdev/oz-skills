@@ -1,6 +1,6 @@
 # Brickbreaker CLI
 
-A dependency-free Rust terminal brick breaker game.
+A dependency-free Rust terminal brick breaker game with a pseudo-3D perspective playfield.
 
 ## Run
 
@@ -8,7 +8,7 @@ A dependency-free Rust terminal brick breaker game.
 cargo run --release
 ```
 
-The game uses ANSI escape sequences and `stty` for raw keyboard input, so it is intended for Unix-like terminals.
+The game uses ANSI escape sequences and `stty` for raw keyboard input, so it is intended for Unix-like terminals. It renders the playfield as a trapezoid with depth lines, scaled far bricks, a wider near paddle, and shadows for a 3D-style terminal view.
 
 ## Controls
 

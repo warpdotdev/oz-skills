@@ -123,43 +123,36 @@ impl GameState {
 
     fn render(&self, stdout: &mut impl Write) -> io::Result<()> {
         let mut board = vec![vec![' '; self.width]; self.height];
-
-        for x in 0..self.width {
-            board[0][x] = '-';
-            board[self.height - 1][x] = '-';
-        }
-        for row in board.iter_mut() {
-            row[0] = '|';
-            row[self.width - 1] = '|';
-        }
-        board[0][0] = '+';
-        board[0][self.width - 1] = '+';
-        board[self.height - 1][0] = '+';
-        board[self.height - 1][self.width - 1] = '+';
+        self.draw_3d_arena(&mut board);
 
         for brick in self.bricks.iter().filter(|brick| brick.alive) {
-            for x in brick.x..brick.x + brick.width {
-                if self.in_bounds(x, brick.y) {
-                    board[brick.y as usize][x as usize] = '#';
-                }
-            }
+            self.draw_3d_span(&mut board, brick.x, brick.x + brick.width - 1, brick.y + 1, '.');
+            self.draw_3d_span(&mut board, brick.x, brick.x + brick.width - 1, brick.y, '#');
         }
 
         let paddle_y = self.paddle_y();
-        for x in self.paddle_x..self.paddle_x + self.paddle_width {
-            if self.in_bounds(x, paddle_y) {
-                board[paddle_y as usize][x as usize] = '=';
-            }
-        }
+        self.draw_3d_span(
+            &mut board,
+            self.paddle_x,
+            self.paddle_x + self.paddle_width - 1,
+            paddle_y + 1,
+            '-',
+        );
+        self.draw_3d_span(
+            &mut board,
+            self.paddle_x,
+            self.paddle_x + self.paddle_width - 1,
+            paddle_y,
+            '=',
+        );
 
-        if self.in_bounds(self.ball.pos.x, self.ball.pos.y) {
-            board[self.ball.pos.y as usize][self.ball.pos.x as usize] = 'o';
-        }
+        self.draw_3d_point(&mut board, self.ball.pos.x + 1, self.ball.pos.y + 1, '.');
+        self.draw_3d_point(&mut board, self.ball.pos.x, self.ball.pos.y, 'O');
 
         let mut output = String::with_capacity((self.width + 1) * (self.height + 3));
         output.push_str("\x1b[H");
         output.push_str(&format!(
-            "Score: {}  Lives: {}  Level: {}  Controls: a/d or arrows, p pause, r restart, q quit\n",
+            "3D Brickbreaker  Score: {}  Lives: {}  Level: {}  Controls: a/d or arrows, p pause, r restart, q quit\n",
             self.score, self.lives, self.level
         ));
 
@@ -171,13 +164,116 @@ impl GameState {
         }
 
         match self.status {
-            Status::Playing => output.push_str("Clear every brick to advance. Do not let the ball pass the paddle.\n"),
+            Status::Playing => output.push_str("Perspective view: far bricks are smaller, near paddle is wider, shadows show depth.\n"),
             Status::Paused => output.push_str("Paused. Press p to resume, r to restart, or q to quit.\n"),
             Status::GameOver => output.push_str("Game over. Press r to restart or q to quit.\n"),
         }
 
         stdout.write_all(output.as_bytes())?;
         stdout.flush()
+    }
+
+    fn draw_3d_arena(&self, board: &mut [Vec<char>]) {
+        for y in 0..self.height as i32 {
+            let left = self.perspective_left(y);
+            let right = self.perspective_right(y);
+            let row = y as usize;
+
+            Self::set_cell(board, left, row, '/');
+            Self::set_cell(board, right, row, '\\');
+
+            if y % 3 == 0 && y > 0 && y < self.height as i32 - 1 {
+                for x in left + 1..right {
+                    if x % 4 == 0 {
+                        Self::set_cell(board, x, row, '.');
+                    }
+                }
+            }
+
+            for lane in 1..4 {
+                let lane_x = self.projected_x((self.width as i32 * lane) / 4, y);
+                if lane_x > left && lane_x < right && y % 2 == 0 {
+                    Self::set_cell(board, lane_x, row, ':');
+                }
+            }
+        }
+
+        let top_y = 0;
+        let top_left = self.perspective_left(top_y);
+        let top_right = self.perspective_right(top_y);
+        for x in top_left..=top_right {
+            Self::set_cell(board, x, top_y as usize, '-');
+        }
+        Self::set_cell(board, top_left, top_y as usize, '+');
+        Self::set_cell(board, top_right, top_y as usize, '+');
+
+        let bottom_y = self.height as i32 - 1;
+        let bottom_left = self.perspective_left(bottom_y);
+        let bottom_right = self.perspective_right(bottom_y);
+        for x in bottom_left..=bottom_right {
+            Self::set_cell(board, x, bottom_y as usize, '=');
+        }
+        Self::set_cell(board, bottom_left, bottom_y as usize, '+');
+        Self::set_cell(board, bottom_right, bottom_y as usize, '+');
+    }
+
+    fn draw_3d_span(&self, board: &mut [Vec<char>], start_x: i32, end_x: i32, y: i32, cell: char) {
+        if y < 0 || y >= self.height as i32 {
+            return;
+        }
+
+        let screen_start = self.projected_x(start_x, y);
+        let screen_end = self.projected_x(end_x, y).max(screen_start);
+        let row = y as usize;
+
+        for x in screen_start..=screen_end {
+            Self::set_cell(board, x, row, cell);
+        }
+
+        if cell == '#' || cell == '=' {
+            Self::set_cell(board, screen_start, row, '[');
+            Self::set_cell(board, screen_end, row, ']');
+        }
+    }
+
+    fn draw_3d_point(&self, board: &mut [Vec<char>], x: i32, y: i32, cell: char) {
+        if y < 0 || y >= self.height as i32 {
+            return;
+        }
+
+        let screen_x = self.projected_x(x, y);
+        Self::set_cell(board, screen_x, y as usize, cell);
+    }
+
+    fn projected_x(&self, x: i32, y: i32) -> usize {
+        let y = y.clamp(0, self.height as i32 - 1);
+        let left = self.perspective_left(y);
+        let right = self.perspective_right(y);
+        let span = right.saturating_sub(left).max(1);
+        let x = x.clamp(0, self.width as i32 - 1) as usize;
+        let logical_span = self.width.saturating_sub(1).max(1);
+
+        left + x * span / logical_span
+    }
+
+    fn perspective_left(&self, y: i32) -> usize {
+        let y = y.clamp(0, self.height as i32 - 1) as usize;
+        let far_inset = (self.width / 4).min(16);
+        let depth = self.height.saturating_sub(1).saturating_sub(y);
+
+        far_inset * depth / self.height.saturating_sub(1).max(1)
+    }
+
+    fn perspective_right(&self, y: i32) -> usize {
+        self.width.saturating_sub(1).saturating_sub(self.perspective_left(y))
+    }
+
+    fn set_cell(board: &mut [Vec<char>], x: usize, y: usize, cell: char) {
+        if let Some(row) = board.get_mut(y) {
+            if let Some(slot) = row.get_mut(x) {
+                *slot = cell;
+            }
+        }
     }
 
     fn move_paddle(&mut self, delta: i32) {
@@ -298,9 +394,6 @@ impl GameState {
         self.height as i32 - 3
     }
 
-    fn in_bounds(&self, x: i32, y: i32) -> bool {
-        x >= 0 && y >= 0 && x < self.width as i32 && y < self.height as i32
-    }
 }
 
 struct TerminalGuard {
@@ -516,5 +609,16 @@ mod tests {
 
         assert_eq!(game.lives, 2);
         assert_eq!(game.status, Status::Playing);
+    }
+
+    #[test]
+    fn perspective_projection_widens_toward_paddle() {
+        let game = GameState::new(70, 24);
+        let near_y = game.height as i32 - 1;
+
+        assert!(game.perspective_left(0) > game.perspective_left(near_y));
+        assert_eq!(game.perspective_left(near_y), 0);
+        assert_eq!(game.projected_x(0, near_y), 0);
+        assert!(game.projected_x(0, 0) > 0);
     }
 }
