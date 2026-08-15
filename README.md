@@ -24,6 +24,16 @@ To use a skill from this repository:
 
 Warp will automatically detect the new skill on your next interaction.
 
+### Installing with the Skills CLI
+
+You can also install a skill without copying files by hand, using the [Skills CLI](https://skills.sh):
+
+```bash
+npx skills add warpdotdev/oz-skills --skill factory-setup
+```
+
+Swap `factory-setup` for any skill name under `.agents/skills/` in this repo — for example, use this same command to bootstrap [`factory-setup`](.agents/skills/factory-setup/SKILL.md), which walks a third-party coding agent (Claude Code, Codex, Cursor, or any other MCP client) through connecting to Warp Factory. Run `npx skills add --help` for flags that target a specific agent or install scope.
+
 ## Contributing
 
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding skills.
