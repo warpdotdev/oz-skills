@@ -38,13 +38,16 @@ For package scanning, install the scanner separately:
 
 ```bash
 pipx install plugin-scanner
+plugin-scanner --version
 ```
 
 Do not assume the `hol-guard` distribution also provides `plugin-scanner`.
 
 ## Protect a Supported Harness
 
-HOL Guard supports Codex, Claude Code, Copilot CLI, Cursor, Gemini CLI, Hermes, OpenClaw, OpenCode, and Antigravity. Use the Guard-owned setup flow instead of hand-editing the harness config:
+Use `hol-guard detect --json` as the source of truth for the supported local harness and its exact identifier. Do not keep a separate harness list in this skill, and do not guess an identifier when Guard does not detect support.
+
+Use the Guard-owned setup flow instead of hand-editing harness configuration:
 
 ```bash
 hol-guard bootstrap
@@ -54,25 +57,9 @@ hol-guard run <harness>
 hol-guard doctor <harness> --json
 ```
 
-Common harness names include:
+Do not claim the session is protected until Guard reports a successful harness setup. A deny, review-required state, Guard error, timeout, or unavailable runtime is not permission to launch an unprotected copy of the agent.
 
-- `codex`
-- `claude-code`
-- `copilot`
-- `cursor`
-- `gemini`
-- `hermes`
-- `openclaw`
-- `opencode`
-- `antigravity`
-
-For Hermes, prefer its dedicated bootstrap when appropriate:
-
-```bash
-hol-guard hermes bootstrap
-```
-
-Warp and Oz can use this skill to operate HOL Guard, but do not describe Warp itself as a protected harness unless HOL Guard reports support for it.
+Warp and Oz can use this skill to operate HOL Guard, but do not describe Warp itself as a protected harness unless `hol-guard detect --json` reports support for it.
 
 ## Review Approvals and Evidence
 
