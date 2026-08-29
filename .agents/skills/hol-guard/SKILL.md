@@ -67,10 +67,12 @@ When Guard blocks or queues work, inspect the request rather than bypassing it:
 
 ```bash
 hol-guard approvals
-hol-guard approvals open
+hol-guard approvals open <request-id>
 hol-guard receipts
 hol-guard diff <harness>
 ```
+
+Use the pending request ID shown by `hol-guard approvals`; do not guess or reuse an unrelated request ID.
 
 Only after the user has reviewed the risk and requested a terminal decision:
 
