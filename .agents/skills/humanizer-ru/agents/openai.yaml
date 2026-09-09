@@ -1,0 +1,5 @@
+interface:
+  display_name: "Humanizer RU"
+  short_description: "Убирает следы нейросети из русского текста: 64 паттерна, 21 жёстких банов, голос автора."
+policy:
+  allow_implicit_invocation: true
